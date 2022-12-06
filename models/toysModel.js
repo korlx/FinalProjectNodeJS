@@ -20,10 +20,10 @@ exports.toysValidation=bodyRequest=>{
     let joiShema=Joi.object({
         name:Joi.string().alphanum().min(2).max(20).required(),
         info:Joi.string().min(13).max(750).required(),
-        category:Joi.string().min(3).max(20).require(),
-        imgUrl:Joi.string().dataUri().required(),
+        category:Joi.string().min(3).max(20).required(),
+        imgUrl:Joi.string().required(),
         price:Joi.number().min(1).required(),
                
-    })
+    })  
     return joiShema.validate(bodyRequest)
 }
