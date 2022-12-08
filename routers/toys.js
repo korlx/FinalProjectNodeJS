@@ -29,7 +29,7 @@ router.post('/',async(req,res)=>{
    }
 
     try {
-        let ModelReqData=ToysModel(req.body)
+        let ModelReqData= ToysModel(req.body)
         await ModelReqData.save();
         res.status(201).json({msg:"saved",ModelReqData})
     } 
@@ -42,9 +42,11 @@ router.post('/',async(req,res)=>{
 router.get("/search",async(req,res) => {
   try{
     let searchQ = req.query.s;
-    let searchExp = new RegExp(searchQ,"i")
-    let data = await ToysModel.find({name:searchExp})
+    let regQuery  = new RegExp(searchQ,"i")
+    let data = await CatModel 
+    .find({$or:[{name:regQuery},{info:regQuery}]})
     .limit(20)
+    .skip(0)
     res.json(data);
   }
   catch(err){
@@ -90,6 +92,7 @@ router.put("/:editId",async(req,res)=>{
    return res.status(400).json(validateRequest.error.details)
   }
   try {
+    let editId = req.params.idEdit;
     let data=await ToysModel.updateOne({_id:req.params.editId},req.body);
   res.json(data);
   } 
