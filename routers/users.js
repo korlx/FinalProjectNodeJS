@@ -42,7 +42,7 @@ router.post("/",async(req,res) => {
   }
 })
 
-//login
+
 router.post("/login", async(req,res) => {
   let validBody = validteLogin(req.body);
   if(validBody.error){
