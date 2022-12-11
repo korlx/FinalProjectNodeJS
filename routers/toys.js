@@ -65,7 +65,7 @@ router.get("/category/:cat_name",async(req,res)=>{
   try {
     let cat_name=req.params.cat_name;
     let data=await ToysModel
-    .find({category_id:cat_name})
+    .find({category:cat_name})
     .limit(perPage)
     .skip((page-1) * perPage )
     .sort({[sort]:reverse})
