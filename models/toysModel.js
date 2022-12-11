@@ -18,7 +18,7 @@ exports.ToysModel=mongoose.model("toys",toysSchema,"toys");
 
 exports.toysValidation=bodyRequest=>{
     let joiShema=Joi.object({
-        name:Joi.string().alphanum().min(2).max(20).required(),
+        name:Joi.string().min(2).max(100).required(),
         info:Joi.string().min(13).max(750).required(),
         category:Joi.string().min(3).max(20).required(),
         imgUrl:Joi.string().required(),
