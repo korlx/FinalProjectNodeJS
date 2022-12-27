@@ -3,11 +3,12 @@ const app=express()
 const root=require("./root")
 const toys=require("./toys")
 const users=require("./users")
+const commentsR=require("./comments")
 exports.routeInit=(app)=>{
     app.use('/',root);
     app.use("/toys",toys);
    app.use("/users",users);
-   
+   app.use("/comments",commentsR);
 
 
 
